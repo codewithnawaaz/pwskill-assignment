@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>rental calculate</title>
+    <style>
+      body {
+        display: flex;
+        height: 80vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      input {
+        padding: 0.2rem 1rem;
+        margin-bottom: 1rem;
+      }
+      #car {
+        padding: 0.3rem 1rem;
+      }
+      .btn {
+        padding: 0.2rem 0.5rem;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Calculate rental of car</h1>
+    <input
+      type="text"
+      name="days"
+      id="noDays"
+      placeholder="No of days rented car"
+    />
+    <div>
+      <label for="car">Car:</label>
+      <select name="car" id="car">
+        <option value="economy">Economy Rs.4000/day</option>
+        <option value="midsize">Midsize Rs.10000/day</option>
+        <option value="luxury">Luxury Rs.20000/day</option>
+      </select>
+    </div>
+
+    <button class="btn">Calculate</button>
+    <p class="message"></p>
+
+    <script>
+      const nodays = document.querySelector("#noDays");
+      const car = document.querySelector("#car");
+      const message = document.querySelector(".message");
+
+      document.querySelector(".btn").addEventListener("click", function () {
+        const days = Number(nodays.value);
+        const carType = car.value;
+        let costPerday = 0;
+
+        switch (carType) {
+          case "economy":
+            costPerday = 4000;
+            break;
+          case "midsize":
+            costPerday = 6000;
+            break;
+          case "luxury":
+            costPerday = 8000;
+            break;
+          default:
+            message.textContent = "Invalid car type";
+            return; // exit the function early
+        }
+
+        const totalCost = days * costPerday;
+        message.textContent = `Total rental cost: ${totalCost}`;
+      });
+    </script>
+  </body>
+</html>
