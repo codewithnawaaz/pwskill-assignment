@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password validaor</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      height: 80vh;
+      align-items: center;
+    }
+    .container {
+      width: 40vw;
+      height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form {
+      width: 70%;
+      margin: 0 auto;
+    }
+    .password label {
+      font-size: 1.3rem;
+    }
+    .password input {
+      width: 70%;
+      height: 2rem;
+      font-size: 1.3rem;
+      border-radius: 0.5rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid black;
+    }
+    .signin {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+      margin-top: 0.5rem;
+      cursor: pointer;
+    }
+    .message {
+      font-size: 1rem;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <form action="#" class="form">
+        <div class="password">
+          <label for="password">Password (8 charcater minimum):</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            minlength="8"
+            required
+          />
+        </div>
+        <div class="password">
+          <label for="confirmPassword">Confirm password:</label>
+          <input
+            type="password"
+            name=" confirmPassword"
+            id="confirmPassword"
+            minlength="8"
+            required
+          />
+        </div>
+        <p class="message"></p>
+        <input type="submit" value="Sign in" class="signin" />
+      </form>
+    </div>
+
+    <script>
+      let password = document.querySelector("#password");
+      let confirmPassword = document.querySelector("#confirmPassword");
+      let validatePass = function () {
+        if (password.value !== confirmPassword.value) {
+          document.querySelector(".message").textContent =
+            "Password is not matched, validation unsuccessfull ";
+          document.querySelector(".message").style.color = "#ff0000";
+        } else {
+          document.querySelector(".message").textContent =
+            "Password is  matched, validation successfull ";
+          document.querySelector(".message").style.color = "#4bb543";
+        }
+      };
+
+      confirmPassword.addEventListener("input", validatePass);
+    </script>
+  </body>
+</html>

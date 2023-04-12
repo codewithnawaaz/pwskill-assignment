@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First letter capitalize</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+      }
+      .userName {
+        padding: 0.5rem 1rem;
+        font-size: 1.3rem;
+        font-weight: 500;
+        width: 20vw;
+        margin: 1rem auto;
+        border-radius: 1rem;
+      }
+      .btn {
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        width: 10rem;
+        margin: auto;
+        margin-bottom: 1rem;
+      }
+      .container {
+        background-color: transparent;
+        box-shadow: 1px 1px 5px black;
+
+        height: 50vh;
+        width: 30vw;
+        display: grid;
+        place-content: center;
+        padding: 2rem;
+      }
+      .message {
+        font-size: 1.3rem;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>If user input 1st letter small it wil convert to capitalize</h2>
+      <input
+        type="text"
+        class="userName"
+        placeholder=" enter your name"
+        name="username"
+        required
+      />
+      <button class="submit btn">submit</button>
+      <button class="reset btn">Reset</button>
+      <p class="message"></p>
+    </div>
+    <script>
+      const message = document.querySelector(".message");
+
+      document.querySelector(".submit").addEventListener("click", function () {
+        const userName = document.querySelector(".userName").value;
+        const capitalizedUserName =
+          userName.charAt(0).toUpperCase() + userName.slice(1);
+        if (!userName) {
+          message.textContent = "kindly enter user name?☹️";
+        } else {
+          userName === capitalizedUserName
+            ? (message.textContent = `User entered correct input: ${userName}`)
+            : (message.textContent = `User entered incorrect first letter, function converted it: ${capitalizedUserName}`);
+        }
+      });
+
+      document.querySelector(".reset").addEventListener("click", function () {
+        document.querySelector(".userName").value = "";
+        message.textContent = "";
+      });
+    </script>
+  </body>
+</html>

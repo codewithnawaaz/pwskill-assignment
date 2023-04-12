@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple calculator usinig switch case</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      height: 80vh;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      width: 60vw;
+      height: 50vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #form {
+      width: 30%;
+      height: 70%;
+      /* background-color: red; */
+      padding: 2rem 4rem;
+      position: relative;
+      box-shadow: 0px 1px 1px 3px rgb(174, 112, 112);
+    }
+
+    .inputNumber label {
+      font-size: 1.2rem;
+      margin: 0.5rem;
+    }
+    .inputNumber {
+      margin: 0.5rem 0rem;
+    }
+    #num1,
+    #num2,
+    #operater {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+
+    .calculate {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
+    }
+    .result {
+      margin-top: 1rem;
+    }
+    .operater {
+      font-size: 1.3rem;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <!-- <form action="" id="form"> -->
+      <div id="form">
+        <div class="inputNumber">
+          <label for="num1"> Enter your 1st number:</label>
+          <input type="number" name="num1" id="num1" />
+        </div>
+        <div class="inputNumber">
+          <label for="num1"> Enter your 2nd number:</label>
+          <input type="number" name="num2" id="num2" />
+        </div>
+
+        <label for="operater" class="operater">Operater:</label>
+        <select name="operater" id="operater">
+          <option value="add">Addition</option>
+          <option value="sub">Substraction</option>
+          <option value="mul">Multiplication</option>
+          <option value="divi">Division</option>
+        </select>
+
+        <button class="calculate">calculate</button>
+        <p class="result"></p>
+      </div>
+      <!-- </form> -->
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

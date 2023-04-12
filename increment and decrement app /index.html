@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>app counter</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+      }
+      .container {
+        text-align: center;
+        padding: 10rem;
+        background-color: #555;
+      }
+      .heading {
+        font-size: 3rem;
+        color: white;
+      }
+      .increment {
+        background-color: green;
+      }
+      .decrement {
+        background-color: red;
+      }
+      .btn {
+        padding: 0rem 1.5rem;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+      .btn:hover {
+        color: white;
+      }
+      .counts {
+        color: aliceblue;
+        font-size: 3rem;
+        padding: 0 2rem;
+      }
+      .reset {
+        font-size: 1.5rem;
+        display: block;
+        margin-left: 5rem;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading">Counter App</h1>
+      <button class="btn decrement">-</button>
+      <span class="counts">0</span>
+      <button class="btn increment">+</button>
+      <button class="btn reset">Reset</button>
+    </div>
+    <script>
+      let count = 0;
+      document.querySelector(".decrement").onclick = function () {
+        if (count > 0) {
+          count -= 1;
+
+          document.querySelector(".counts").innerHTML = count;
+        }
+      };
+      document.querySelector(".increment").onclick = function () {
+        count += 1;
+        document.querySelector(".counts").innerHTML = count;
+      };
+      document.querySelector(".reset").onclick = function () {
+        count = 0;
+        document.querySelector(".counts").innerHTML = count;
+      };
+    </script>
+  </body>
+</html>

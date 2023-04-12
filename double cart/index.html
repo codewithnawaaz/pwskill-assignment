@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>double cart</title>
+  </head>
+  <body>
+    <h1>double cart</h1>
+    <script>
+      function doubleQuantity(cart) {
+        for (let i = 0; i < cart.length; i++) {
+          console.log((cart[i] *= 2));
+        }
+      }
+      let cart = [2, 4, 8, 16];
+      doubleQuantity(cart);
+    </script>
+  </body>
+</html>

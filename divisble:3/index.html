@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>divisble by 3</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <label for="number">Enter numbers</label>
+      <input type="number" name="number" id="number" />
+      <ol class="list">
+        numbers
+      </ol>
+      <button class="add">add</button>
+      <button class="check">check</button>
+    </div>
+  </body>
+  <script>
+    document.querySelector(".add").addEventListener("click", function () {
+      const number = document.getElementById("number").value;
+      const list = document.querySelector(".list");
+      const newli = document.createElement("li");
+      newli.textContent = number;
+      list.appendChild(newli);
+    });
+
+    document.querySelector(".check").addEventListener("click", function () {
+      const list = document.querySelector(".list");
+      const items = list.getElementsByTagName("li");
+      const divisibleByThree = [];
+      for (let i = 0; i < items.length; i++) {
+        const number = parseInt(items[i].textContent);
+        if (number % 3 === 0) {
+          divisibleByThree.push(number);
+        }
+      }
+      list.innerHTML = "";
+      for (let i = 0; i < divisibleByThree.length; i++) {
+        const newli = document.createElement("li");
+        newli.textContent = divisibleByThree[i];
+        list.appendChild(newli);
+      }
+    });
+  </script>
+</html>

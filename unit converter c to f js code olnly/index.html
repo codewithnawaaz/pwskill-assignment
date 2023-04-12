@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unit Converter</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        flex-direction: column;
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <h2>Celsius to Fahrenheit</h2>
+    <input type="text" name="" id="cel" placeholder="Enter Celsius value" />
+    <button class="btn">Convert</button>
+    <p class="message"></p>
+    <script>
+      const celInput = document.querySelector("#cel");
+      const message = document.querySelector(".message");
+
+      function celsiusToFahrenheit(celsius) {
+        const fahrenheit = (celsius * 9) / 5 + 32;
+        return fahrenheit;
+      }
+
+      document.querySelector(".btn").addEventListener("click", function () {
+        const celsius = parseFloat(celInput.value);
+        if (isNaN(celsius)) {
+          message.textContent = "Please enter a valid number";
+        } else {
+          const fahrenheit = celsiusToFahrenheit(celsius);
+          message.textContent = celsius + "°C = " + fahrenheit + "°F";
+  celInput.value=""
+        }
+        
+      });
+    </script>
+  </body>
+</html>
+
+      </body>
+    </html>
+  </body>
+</html>

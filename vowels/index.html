@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>First letter capitalize</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+      }
+      .userName {
+        padding: 0.5rem 1rem;
+        font-size: 1.3rem;
+        font-weight: 500;
+        width: 20vw;
+        margin: 1rem auto;
+        border-radius: 1rem;
+      }
+      .btn {
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        width: 10rem;
+        margin: auto;
+        margin-bottom: 1rem;
+      }
+      .container {
+        background-color: transparent;
+        box-shadow: 1px 1px 5px black;
+        position: relative;
+        height: 50vh;
+        width: 30vw;
+        display: grid;
+        place-content: center;
+        padding: 2rem;
+      }
+      .message {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 1.3rem;
+        color: red;
+      }
+
+      h2 {
+        color: rgb(167, 46, 46);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>-:Vowels checker in Name:-</h2>
+      <input
+        type="text"
+        class="userName"
+        placeholder=" enter your name"
+        name="username"
+        required
+      />
+      <button class="submit btn">submit</button>
+      <button class="reset btn">Reset</button>
+      <p class="message"></p>
+    </div>
+    <script>
+      let displayMessage = function (message) {
+        document.querySelector(".message").textContent = message;
+      };
+
+      let vowelsChecker = function () {
+        let name = document.querySelector(".userName").value;
+        if (!name) {
+          displayMessage("Please enter a name.");
+          return;
+        }
+        const vowels = ["a", "e", "i", "o", "u"];
+        let count = 0;
+        for (let i = 0; i < name.length; i++) {
+          if (vowels.includes(name[i].toLowerCase())) count++;
+        }
+        displayMessage(`Total number of vowels in the name is ${count}`);
+        document.querySelector(".userName").value = "";
+      };
+
+      document
+        .querySelector(".submit")
+        .addEventListener("click", vowelsChecker);
+
+      document.querySelector(".reset").addEventListener("click", function () {
+        displayMessage("");
+        // document.querySelector(".userName").value = "";
+      });
+
+      document
+        .querySelector(".userName")
+        .addEventListener("click", function () {
+          displayMessage("");
+        });
+    </script>
+  </body>
+</html>

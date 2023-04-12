@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>color mixer</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+    }
+    .container {
+      background-color: rgb(206, 199, 199);
+      height: 40vh;
+      width: 30vw;
+      /* display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; */
+      /* centering using grid */
+      display: grid;
+      place-content: center;
+      box-shadow: 2px 2px 10px 5px rgb(85, 81, 81);
+    }
+    .color input {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      padding: 0.4rem 0.2rem;
+      border-radius: 0.5rem;
+    }
+    .submit {
+      width: 8vw;
+      margin: auto;
+      font-size: 1rem;
+      padding: 0.4rem 0rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      box-shadow: 2px 2px 5px 3px rgb(117, 102, 102);
+    }
+    .message {
+      font-size: 1.2rem;
+      color: red;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="color">
+        <input
+          type="text"
+          name="color1"
+          id="color1"
+          placeholder="Enter your first color"
+        />
+      </div>
+      <div class="color">
+        <input
+          type="text"
+          name="color2"
+          id="color2"
+          placeholder="Enter your second color"
+        />
+      </div>
+      <button type="submit" class="submit">Result</button>
+      <p class="message"></p>
+    </div>
+    <script>
+      let displayMessage = function (message) {
+        document.querySelector(".message").textContent = message;
+      };
+      let result = function (result) {
+        document.querySelector("body").style.backgroundColor = result;
+      };
+
+      document.querySelector(".submit").addEventListener("click", function () {
+        let color1 = document.querySelector("#color1").value;
+        let color2 = document.querySelector("#color2").value;
+
+        displayMessage("");
+
+        switch (color1) {
+          case "red":
+            switch (color2) {
+              case "blue":
+                result("purple");
+                break;
+              case "yellow":
+                result("orange");
+                break;
+              default:
+                displayMessage("Invalid color combination");
+                break;
+            }
+            break;
+          case "blue":
+            switch (color2) {
+              case "red":
+                result("purple");
+                break;
+              case "yellow":
+                result("green");
+                break;
+              default:
+                displayMessage("invalid color combination");
+                break;
+            }
+            break;
+          case "yellow":
+            switch (color2) {
+              case "red":
+                result("orange");
+                break;
+              case "blue":
+                result("green");
+                break;
+              default:
+                displayMessage("Invalid color combination");
+                break;
+            }
+            break;
+          default:
+            displayMessage("Invalid color combination");
+            break;
+        }
+      });
+    </script>
+  </body>
+</html>

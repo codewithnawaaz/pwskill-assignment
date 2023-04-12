@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>High score</title>
+  </head>
+  <style>
+    body {
+      position: relative;
+      display: flex;
+      height: 80vh;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      /* color: aliceblue; */
+    }
+
+    .inputData {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
+    .inputData label {
+      font-size: 1.2rem;
+    }
+    .inputMarks,
+    .inputName {
+      padding: 0.4rem 0.6rem;
+      margin-bottom: 0.3rem;
+      color: #333;
+    }
+    .add {
+      width: 5vw;
+      margin: 0.8rem auto;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    table,
+    th,
+    td {
+      font-size: 1.4rem;
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+    .container {
+      /* position: relative; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      /* background-color: bisque; */
+      height: 100vh;
+      width: 30vw;
+      box-shadow: 1px 1px 10px 10px grey;
+    }
+    .highMarks {
+      font-size: 1rem;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+    .message {
+      position: absolute;
+      color: #333;
+      font-size: 1.3rem;
+      font-weight: 700;
+      bottom: 4rem;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="inputData">
+        <label for="inputMarks">Enter student details:</label>
+        <input
+          type="text"
+          name="inputName"
+          class="inputName"
+          placeholder="Student Name"
+        />
+
+        <input
+          type="text"
+          name="inputMarks"
+          class="inputMarks"
+          placeholder="Marks"
+        />
+        <button class="add">add</button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>student name:</th>
+            <th>marks:</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="highMarks">Find the highestMarks</button>
+      <p class="message"></p>
+    </div>
+    <script>
+      // Get references to the relevant HTML elements
+      const inputName = document.querySelector(".inputName");
+      const inputMarks = document.querySelector(".inputMarks");
+      const tBody = document.querySelector(".tbody");
+      const addButton = document.querySelector(".add");
+
+      // Add an event listener to the "add" button
+      addButton.addEventListener("click", function () {
+        // Create a new table row and two cells for the student name and marks
+        const newRow = document.createElement("tr");
+        const nameCell = document.createElement("td");
+        const marksCell = document.createElement("td");
+        // Set the text content of the name and marks cells to the values entered in the input fields
+        nameCell.textContent = inputName.value;
+        marksCell.textContent = inputMarks.value;
+        //Append the name and marks cells to the new row, and the new row to the table body
+        tBody.appendChild(newRow);
+        newRow.appendChild(nameCell);
+        newRow.appendChild(marksCell);
+
+        // Clear the input fields after adding the new row to the table
+        inputMarks.value = "";
+        inputName.value = "";
+        document.querySelector(".message").textContent = "";
+      });
+
+      const highMarksButton = document.querySelector(".highMarks");
+
+      highMarksButton.addEventListener("click", function () {
+        let highestMarks = 0;
+
+        // Loop through all the rows in the table body
+        const rows = document.querySelectorAll(".tbody tr");
+        for (let i = 0; i < rows.length; i++) {
+          // Get the marks cell for the current row
+          const marksCell = rows[i].querySelector("td:nth-child(2)");
+
+          // Get the marks value and convert it to a number
+          const marksValue = parseInt(marksCell.textContent);
+
+          // Update the highest score if the current score is greater
+          if (marksValue > highestMarks) {
+            highestMarks = marksValue;
+          }
+        }
+
+        // Display the highest score in an alert
+        document.querySelector(
+          ".message"
+        ).textContent = `The highest marks is ${highestMarks}`;
+      });
+    </script>
+  </body>
+</html>
